@@ -1,0 +1,32 @@
+<form name="sendForm" novalidate ng-submit="sendMessage(newMessage)" id="send-form" class="form send-form">
+  <input  name="email" 
+          type="text" 
+          class="form-control" 
+          ng-model="newMessage.email" 
+          ng-pattern="emailPattern"
+           placeholder="Email:" 
+          required>
+  <textarea name="message" 
+            ng-model="newMessage.message" 
+            ng-minlength="8" 
+             placeholder="Message text:"
+            required>
+  </textarea>
+
+      <button type="submit" class="btn send-btn" ng-disabled="sendForm.$invalid" ng-click = "setShowMessage()">
+          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+          send
+      </button>
+  </div>
+
+  <div class="well" ng-show="showMessage">
+    <h3>Thank you!</h3>
+    <p>
+      Message sended ;)
+    </p>
+    <p>
+      <b>Your email:</b> {{sended.email}} <br>
+      <b>Your message:</b> {{sended.message}}
+    </p>
+  </div>
+</form>

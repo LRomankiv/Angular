@@ -1,0 +1,84 @@
+
+// Variables ===========================================================>>
+
+$url:  '../img/';
+
+$font: 'Raleway', sans-serif;
+
+$color: #424344;
+$blue: #1CA5D5;
+
+$darken:  darken($color, 10%);
+$lighten: lighten($color, 40%);
+
+$darken-blue:  darken($blue, 10%);
+$lighten-blue: lighten($blue, 40%);
+
+// Mixins ==============================================================>>
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin box-sizing(){
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+@mixin background-size($w, $h){
+    -webkit-background-size: $w $h;
+       -moz-background-size: $w $h;
+            background-size: $w $h;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin background-repeat-position($l, $t, $repeat){
+    background-position: $l $t;
+    background-repeat: $repeat;
+}
+
+@mixin gradient($rgba1, $rgba2, $hex1, $hex2){
+  background: $rgba1;
+  background: -moz-linear-gradient(top, $rgba1 0%, $rgba2 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, $rgba1), color-stop(100%, $rgba2));
+  background: -webkit-linear-gradient(top, $rgba1 0%, $rgba2 100%);
+  background: -o-linear-gradient(top, $rgba1 0%, $rgba2 100%);
+  background: -ms-linear-gradient(top, $rgba1 0%, $rgba2 100%);
+  background: linear-gradient(to bottom, $rgba1 0%, $rgba2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= $hex1, endColorstr= $hex2, GradientType=0 );
+}
+
+@mixin shadow($args...) {
+  -webkit-box-shadow: $args;
+     -moz-box-shadow: $args;
+          box-shadow: $args;
+}
+
+@mixin animation($name, $time, $count, $function){
+    -webkit-animation-name: $name;
+       -moz-animation-name: $name;
+         -o-animation-name: $name;
+            animation-name: $name;
+    -webkit-animation-duration: $time;
+       -moz-animation-duration: $time;
+         -o-animation-duration: $time;
+            animation-duration: $time;
+    -webkit-animation-iteration-count: $count;
+       -moz-animation-iteration-count: $count;
+         -o-animation-iteration-count: $count;
+            animation-iteration-count: $count;
+    -webkit-animation-timing-function: $function;
+       -moz-animation-timing-function: $function;
+         -o-animation-timing-function: $function;
+            animation-timing-function: $function;
+}
